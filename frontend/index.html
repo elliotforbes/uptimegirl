@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UpTimeGirl</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>        
+</head>
+<body>
+    
+    <div id="app">
+        <div class="container">
+            <input type="text" v-model="url">
+            <button v-on:click="newSite(url)">Add Site</button>    
+        </div>
+        <div class="row">
+
+            <h2>Sites Monitoring</h2>
+        
+            <div class="col l4" v-for="fn in functions.Functions"> 
+                <div class="card">
+                    <h4>{{ fn.FunctionName }}</h4>
+                    <p><b>Last Modified:</b> {{ fn.LastModified }}</p>
+                    <p><b>Runtime:</b> {{ fn.Runtime }}</p> 
+                    <p><b>Role:</b> {{ fn.Role }}</p> 
+                    <p><b>Handler:</b> {{ fn.Handler }}</p> 
+
+                    <p v-if="fn.Environment"><b>Site URL:</b> {{ fn.Environment.Variables.URL }}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+    <script src="main.js"></script>
+</body>
+</html>
